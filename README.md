@@ -9,7 +9,7 @@
 5. **Elitism**: the top 25% of each generation survive unchanged
 6. **Stagnation recovery**: if fitness stops improving for 100 generations, the bottom half of the population is replaced with fresh random boards
 
-The loop runs until a board with zero conflicts is found, then prints the solution and plots average conflicts per generation over time.
+The loop runs until a board with zero conflicts is found, then prints the solution and plots average and least conflicts per generation over time.
 
 ## Usage 
 

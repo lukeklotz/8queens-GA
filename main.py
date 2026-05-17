@@ -72,6 +72,7 @@ def mutate(child):
 trial = 0
 trials = []
 avg_fitness = []
+best_fitness = []
 
 POP_SIZE = 500
 
@@ -111,12 +112,15 @@ while not solved:
             print("Solved")
             solved = True
     avg_fitness.append(get_average_fitness(population))
+    best_fitness.append(get_best_fitness(population))
     trial += 1
     trials.append(trial)
 
-plt.plot(trials, avg_fitness)
+plt.plot(trials, avg_fitness, label='average fitness')
+plt.plot(trials, best_fitness, label='best fitness')
 
-plt.xlabel('interation')
+plt.xlabel('iteration')
 plt.ylabel('# of conflicts')
 plt.title('8-queens GA solution progress')
+plt.legend()
 plt.show()
