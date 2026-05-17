@@ -45,6 +45,14 @@ def get_average_fitness(parents):
         avg += count_conflicts(parents[i]) 
     return avg / len(parents)
 
+def get_best_fitness(parents):
+    if len(parents) == 0:
+        return 100
+    best = float('inf')
+    for i in range(len(parents)):
+        best = min(best, count_conflicts(parents[i]))
+    return best
+
 def breed(parents):
     p_len = len(parents)
     children = []
@@ -63,7 +71,7 @@ def mutate(child):
 
 trial = 0
 trials = []
-best_fitness = []
+avg_fitness = []
 
 POP_SIZE = 500
 
@@ -102,11 +110,11 @@ while not solved:
             print_board(population[i])
             print("Solved")
             solved = True
-    best_fitness.append(get_average_fitness(population))
+    avg_fitness.append(get_average_fitness(population))
     trial += 1
     trials.append(trial)
 
-plt.plot(trials, best_fitness)
+plt.plot(trials, avg_fitness)
 
 plt.xlabel('interation')
 plt.ylabel('# of conflicts')
